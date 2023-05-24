@@ -1,0 +1,7 @@
+#line 1 "C:\\Users\\owen.lee\\Desktop\\Owen\\01.Project\\Autonomous Vehicle\\05.Software\\Arduino\\Autonomous_Vehicle\\.vscode\\arduino.json"
+{
+    "sketch": "Autonomous_Vehicle.ino",
+    "output": "build",
+    "port": "COM5",
+    "board": "arduino:avr:uno"
+}

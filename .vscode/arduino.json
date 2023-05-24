@@ -1,0 +1,6 @@
+{
+    "sketch": "Autonomous_Vehicle.ino",
+    "output": "build",
+    "port": "COM5",
+    "board": "arduino:avr:uno"
+}

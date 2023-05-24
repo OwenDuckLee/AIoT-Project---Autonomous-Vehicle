@@ -1,0 +1,63 @@
+#include <Arduino.h>
+#line 1 "C:\\Users\\owen.lee\\Desktop\\Owen\\01.Project\\Autonomous Vehicle\\05.Software\\Arduino\\Autonomous_Vehicle\\Autonomous_Vehicle.ino"
+#include "config.h"
+
+class ultrasonic {
+    private:
+        byte triggerPin;
+        byte echoPin;
+        unsigned long distanceDetected;
+
+        unsigned long calculateDistance(){
+            return distanceDetected = pingDistance() / 58;
+        }
+
+        unsigned long pingDistance(){
+            digitalWrite(triggerPin , HIGH);
+            delay(10);
+            digitalWrite(triggerPin , LOW);
+            return pulseIn(echoPin, HIGH, 23200);
+        }
+
+        void showDistance(){
+            Serial.print("The detected distance is: ");
+            Serial.print(distanceDetected);
+            Serial.println(" cm.");
+        }
+        
+        void init(){
+            pinMode(triggerPin, OUTPUT);
+            pinMode(echoPin, INPUT);
+        }
+
+    public:
+        ultrasonic(byte _triggerPin, byte _echoPin){
+            triggerPin = _triggerPin;
+            echoPin = _echoPin;
+            init();
+        }
+
+        void runDetectionOfDistance(){
+            calculateDistance();
+            showDistance();
+            delay(2000);
+        }
+};
+
+ultrasonic frontUltrasonic(ULTRASONIC_TRIGGER_PIN, ULTRASONIC_ECHO_PIN);
+
+#line 47 "C:\\Users\\owen.lee\\Desktop\\Owen\\01.Project\\Autonomous Vehicle\\05.Software\\Arduino\\Autonomous_Vehicle\\Autonomous_Vehicle.ino"
+void setup();
+#line 52 "C:\\Users\\owen.lee\\Desktop\\Owen\\01.Project\\Autonomous Vehicle\\05.Software\\Arduino\\Autonomous_Vehicle\\Autonomous_Vehicle.ino"
+void loop();
+#line 47 "C:\\Users\\owen.lee\\Desktop\\Owen\\01.Project\\Autonomous Vehicle\\05.Software\\Arduino\\Autonomous_Vehicle\\Autonomous_Vehicle.ino"
+void setup()
+{   
+    Serial.begin(9600);
+}
+
+void loop()
+{
+    frontUltrasonic.runDetectionOfDistance();
+}
+
