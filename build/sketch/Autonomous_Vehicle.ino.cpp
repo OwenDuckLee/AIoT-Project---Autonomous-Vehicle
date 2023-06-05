@@ -46,11 +46,6 @@ class ultrasonic {
 
 ultrasonic frontUltrasonic(ULTRASONIC_TRIGGER_PIN, ULTRASONIC_ECHO_PIN);
 
-#line 47 "C:\\Users\\owen.lee\\Desktop\\Owen\\01.Project\\Autonomous Vehicle\\05.Software\\Arduino\\Autonomous_Vehicle\\Autonomous_Vehicle.ino"
-void setup();
-#line 52 "C:\\Users\\owen.lee\\Desktop\\Owen\\01.Project\\Autonomous Vehicle\\05.Software\\Arduino\\Autonomous_Vehicle\\Autonomous_Vehicle.ino"
-void loop();
-#line 47 "C:\\Users\\owen.lee\\Desktop\\Owen\\01.Project\\Autonomous Vehicle\\05.Software\\Arduino\\Autonomous_Vehicle\\Autonomous_Vehicle.ino"
 void setup()
 {   
     Serial.begin(9600);
