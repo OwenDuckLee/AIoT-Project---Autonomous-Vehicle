@@ -16,7 +16,7 @@ Motor :: Motor (byte ENA, byte ENB, byte IN1, byte IN2, byte IN3, byte IN4){
     pinMode(IN4, OUTPUT);
 }
 
-Motor :: drive (Modes mode, int pwmA = 0, int pwmB = 0){
+void Motor :: drive (Modes mode, int pwmA = 0, int pwmB = 0){
     byte _pwmA = constrain(pwmA, 0, 255);
     byte _pwmB = constrain(pwmB, 0, 255);
 

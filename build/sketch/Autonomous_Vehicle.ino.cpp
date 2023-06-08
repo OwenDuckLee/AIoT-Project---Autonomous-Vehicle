@@ -1,51 +1,21 @@
 #include <Arduino.h>
 #line 1 "C:\\Users\\owen.lee\\Desktop\\Owen\\01.Project\\Autonomous Vehicle\\05.Software\\Arduino\\Autonomous_Vehicle\\Autonomous_Vehicle.ino"
 #include "config.h"
-
-class ultrasonic {
-    private:
-        byte triggerPin;
-        byte echoPin;
-        unsigned long distanceDetected;
-
-        unsigned long calculateDistance(){
-            return distanceDetected = pingDistance() / 58;
-        }
-
-        unsigned long pingDistance(){
-            digitalWrite(triggerPin , HIGH);
-            delay(10);
-            digitalWrite(triggerPin , LOW);
-            return pulseIn(echoPin, HIGH, 23200);
-        }
-
-        void showDistance(){
-            Serial.print("The detected distance is: ");
-            Serial.print(distanceDetected);
-            Serial.println(" cm.");
-        }
-        
-        void init(){
-            pinMode(triggerPin, OUTPUT);
-            pinMode(echoPin, INPUT);
-        }
-
-    public:
-        ultrasonic(byte _triggerPin, byte _echoPin){
-            triggerPin = _triggerPin;
-            echoPin = _echoPin;
-            init();
-        }
-
-        void runDetectionOfDistance(){
-            calculateDistance();
-            showDistance();
-            delay(2000);
-        }
-};
+#include "UltraSonic.h"
+#include "Motor.h"
 
 ultrasonic frontUltrasonic(ULTRASONIC_TRIGGER_PIN, ULTRASONIC_ECHO_PIN);
+// Motor carMotor(ENA, ENB, 1, 2, 3, 4);
 
+const unsigned int pwm = 200;
+const unsigned int limitDistance = 10;
+unsigned long distance = 0;
+
+#line 12 "C:\\Users\\owen.lee\\Desktop\\Owen\\01.Project\\Autonomous Vehicle\\05.Software\\Arduino\\Autonomous_Vehicle\\Autonomous_Vehicle.ino"
+void setup();
+#line 17 "C:\\Users\\owen.lee\\Desktop\\Owen\\01.Project\\Autonomous Vehicle\\05.Software\\Arduino\\Autonomous_Vehicle\\Autonomous_Vehicle.ino"
+void loop();
+#line 12 "C:\\Users\\owen.lee\\Desktop\\Owen\\01.Project\\Autonomous Vehicle\\05.Software\\Arduino\\Autonomous_Vehicle\\Autonomous_Vehicle.ino"
 void setup()
 {   
     Serial.begin(9600);
@@ -53,6 +23,15 @@ void setup()
 
 void loop()
 {
-    frontUltrasonic.runDetectionOfDistance();
+   distance = frontUltrasonic.runDetectionOfDistance();
+
+   if(distance > limitDistance){
+        //motor forward
+        //carMotor.drive();
+   }
+   else{
+        //motor backward
+        //carMotor.drive();
+   }
 }
 

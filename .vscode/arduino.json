@@ -1,6 +1,6 @@
 {
     "sketch": "Autonomous_Vehicle.ino",
     "output": "build",
-    "port": "COM5",
+    "port": "COM3",
     "board": "arduino:avr:uno"
 }
